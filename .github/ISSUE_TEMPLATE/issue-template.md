@@ -13,4 +13,5 @@ Please clearify in the title of the Issue whether it is:
 - a Feature Request;
 - a Personal Problem with the application;
 - Other.
+
 Also, write the type of issue with the following sintax: full caps and between || (or //;  or \\). Example: |BUG|; |FEATURE|; |PROBLEM|; |OTHER|.
