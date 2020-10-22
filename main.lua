@@ -1,38 +1,31 @@
+display.setStatusBar( display.HiddenStatusBar )
+
+-- include Corona's "widget" library
 local widget = require "widget"
 local composer = require "composer"
 
---
-
-display.setStatusBar( display.HiddenStatusBar )
-
-display.setDefault( "background", 0.1, 0.2, 0.8)
-
-local background = display.newImageRect ("bg1.png", 700, 1120)
-
-local numero
-local result
-local UIGroup = display.newGroup()
-
-local function textListener( event )
-    if ( event.phase == "ended" or event.phase == "submitted") then
-        local num1 = tonumber(numero.text)
-        if (num1) then
-            result.text = num1 * 343.1
-            result.size = 60
-        end
-    end
+-- event listeners for tab buttons:
+local function onFirstView( event )
+	composer.gotoScene( "view1" )
 end
 
-numero = native.newTextField( display.contentCenterX, 150, 170, 45)
-UIGroup:insert( numero )
-numero:addEventListener( "userInput", textListener )
-numero.inputType = "decimal"
+local function onSecondView( event )
+	composer.gotoScene( "view2" )
+end
 
-result = display.newText( "How many seconds?", display.contentCenterX, 320, native.SystemFont)
-UIGroup:insert( result )
-result:setFillColor(180, 180, 0)
-result.size = 32
 
-local logo = display.newImageRect( "img/fulmenLogo1.png", 60, 60)
-logo.x = 290
-logo.y = -14
+-- create a tabBar widget with two buttons at the bottom of the screen
+
+-- table to setup buttons
+local tabButtons = {
+	{ label="Calculator", defaultFile="button1.png", overFile="button1-down.png", width = 32, height = 32, onPress=onFirstView, selected=true },
+	{ label="Curiosities", defaultFile="button2.png", overFile="button2-down.png", width = 32, height = 32, onPress=onSecondView },
+}
+
+-- create the actual tabBar widget
+local tabBar = widget.newTabBar{
+	top = display.contentHeight - 7,	-- 50 is default height for tabBar widget
+	buttons = tabButtons
+}
+
+onFirstView()	-- invoke first tab button's onPress event manually
