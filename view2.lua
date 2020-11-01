@@ -1,12 +1,11 @@
 -----------------------------------------------------------------------------------------
 --
--- view1.lua
+-- view2.lua
 --
 -----------------------------------------------------------------------------------------
 
 local composer = require( "composer" )
 local scene = composer.newScene()
-local native = require("native")
 
 function scene:create( event )
 	local sceneGroup = self.view
@@ -18,29 +17,27 @@ function scene:create( event )
 	
 	-- create a white background to fill screen
 	local background = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
-	background:setFillColor( 0.1, 0.2, 0.9 )
-    
-    local function textListener( event )
-        if ( event.phase == "ended" or event.phase == "submitted" ) then
-            local num1 = tonumber( numero.text )
-            if ( num1 ) then
-                result.text = num1 * 343.1
-                result.size = 60
-            end
-        end
-    end
+	background:setFillColor( 1 )	-- white
 	
-	local numero = native.newTextField( display.contentCenterX, 150, 170, 45 )
-    numero:addEventListener( "userInput", textListener )
-    numero.inputType = "decimal"
+	-- create some text
+	local title = display.newText( "Second View", display.contentCenterX, 125, native.systemFont, 32 )
+	title:setFillColor( 0 )	-- black
+
+	local newTextParams = { text = "Loaded by the second tab's\n\"onPress\" listener\nspecified in the 'tabButtons' table", 
+							x = display.contentCenterX + 10, 
+							y = title.y + 215, 
+							width = 310, 
+							height = 310, 
+							font = native.systemFont, 
+							fontSize = 14, 
+							align = "center" }
+	local summary = display.newText( newTextParams )
+	summary:setFillColor( 0 ) -- black
 	
-	local result = display.newText( "How far is the thunder?", display.contentCenterX, 320, native.SystemFont )
-    result.size = 30
-    	
 	-- all objects must be added to group (e.g. self.view)
 	sceneGroup:insert( background )
-    sceneGroup:insert( numero )
-    sceneGroup:insert( result )
+	sceneGroup:insert( title )
+	sceneGroup:insert( summary )
 end
 
 function scene:show( event )
