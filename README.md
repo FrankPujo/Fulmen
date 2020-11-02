@@ -13,6 +13,8 @@ The current design of the app and the logo have been made with free online tools
 
 Open to any kind of collaboration.
 
+We are looking forward to create a simple website as index to all the useful links for the app.
+
 Contacs:
 Reddit (r/fulmen or u/FrankPujo)
 Instagram (@frank.pujo)
