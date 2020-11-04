@@ -16,5 +16,7 @@ Open to any kind of collaboration.
 We are looking forward to create a simple website as index to all the useful links for the app.
 
 Contacs:
+Stack Overflow (frankpujo)
 Reddit (r/fulmen or u/FrankPujo)
+Solar2D Forums (frankpujo)
 Instagram (@frank.pujo)
