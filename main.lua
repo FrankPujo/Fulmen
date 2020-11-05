@@ -21,6 +21,7 @@ local function onSecondView( event )
 	composer.gotoScene( "view2" )
 end
 
+local loadingScreen = display.newImage( "img/fulmenLogo3.png", 165, 212 )
 
 -- create a tabBar widget with two buttons at the bottom of the screen
 
@@ -37,3 +38,7 @@ local tabBar = widget.newTabBar{
 }
 
 onFirstView()	-- invoke first tab button's onPress event manually
+
+if onFirstView == "ended" then
+    local loadingScreen = nil
+end
