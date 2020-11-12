@@ -11,8 +11,6 @@ The app will calculate how far (in metres) a thunder is from you. All you have t
 
 The current design of the app has been made with free online tools or the Corona Simulator.
 
-There are currently two possible logos for the app, but one of them is much more likely to be the definitive one than the other.
-
 Open to any kind of collaboration, we are also looking for designers to improve the app graphics and create the definitive logo. 
 
 On the main repository there is an html file with the main links to the Fulmen Project and my contacts.
@@ -23,6 +21,10 @@ New features we would like to implement into some new beta versions:
 - receiving curios information about thunderstorms and guides to follow when you are in a thunderstorm
 - creating JSON files to store the user datas to track all the thunder that he saw and registered
 - creating SQL tables to store better the sentences to print with the .lua code and updating them more easily
+
+We currently have 4 possible logos, two will probably will be discarded.
+One logo will probably become the App Icon.
+The other one will be used for a name-logo with one of the following fonts: Futura; Atami; Funky Nouveau JNL (probably not the last because it'not free)
 
 Contacs:
 Stack Overflow (frankpujo)
