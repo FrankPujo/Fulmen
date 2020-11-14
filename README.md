@@ -29,5 +29,6 @@ The other one will be used for a name-logo with one of the following fonts: Futu
 Contacs:
 Stack Overflow (frankpujo)
 Reddit (r/fulmen or u/FrankPujo)
+Discord (FrankPujo#7316 or Fulmen)
 Solar2D Forums (frankpujo)
 Instagram (@frank.pujo)
