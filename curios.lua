@@ -44,6 +44,6 @@ local function onSentRel( listener )
     if press = true then
         picking()
     else
-        print8 "something went wrong... dang it!"
+        print "something went wrong... dang it!"
     end
 end
