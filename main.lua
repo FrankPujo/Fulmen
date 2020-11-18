@@ -2,16 +2,14 @@ local composer = require ( "composer" )
 
 local menu = composer.getScene( menu )
 local calculator = composer.getScene( calculator )
-local curios = composer.getScen( curios )
+local curios = composer.getScene( curios )
 local premenu = composer.getScene( premenu )
 
 local function startApp()
-    if {
-        menu ~= nil
-        calculator ~= nil
-        curios ~= nil
-        premenu ~= nil
-        } then
+    if menu ~= nil and
+        calculator ~= nil and
+            curios ~= nil and
+                premenu ~= nil then
         composer.gotoScene( premenu )
     end
 end
