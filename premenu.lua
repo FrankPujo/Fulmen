@@ -12,9 +12,6 @@ local startBtn = widget.newButton(
 local circle1 = display.newCircle( 75, 75 )
 circle1.stroke = 3
 circle:setStrokeColor( 0.1, 0.2, 0.8 )
+circle.radius = 1
 
-local function onStartRel( event )
-    circle1.radius = circle1.radius + 1
-end
-
-timer.performWithDelay( 20, onStartRel, 40 )
+transition.to( circle1, { time = 2500, radius = 200}

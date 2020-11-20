@@ -1,6 +1,31 @@
 local composer = require ("composer")
 local scene = composer.newScene( menu )
 
-local calculatorBtn = widget.newButton( )
+function scene:create( event )
+    local sceneGroup = self.view
+    
+    local calculatorBtn = widget.newButton( 
+        {
+            onRelease = gotoCalculator
+        }
+    )
+    
+    local curiosBtn = widget.newButton(
+        {
+            onRelease = gotoCurios
+        }
+    )
+    
+    local function gotoCalculator()
+        composer.gotoScene( calculator )
+    end
+    
+    local function gotoCurios()
+        composer.gotoScene( curios )
+    end
+    
+    sceneGroup:insert( calculatorBtn )
+    sceneGroup:insert( curiosBtn )
+end
 
-local curiosBtn = widget.newButton( )
+return scene
