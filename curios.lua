@@ -17,6 +17,9 @@ local s3 = [[SELECT sentence FROM sentences WHERE id = 3]]
 local s4 = [[SELECT sentence FROM sentences WHERE id = 4]]
 local s5 = [[SELECT sentence FROM sentences WHERE id = 5]]
 local s6 = [[SELECT sentence FROM sentences WHERE id = 6]]
+local s7 = [[SELECT sentence FROM sentences WHERE id = 7]]
+local s8 = [[SELECT sentence FROM sentences WHERE id = 8]]
+local s9 = [[SELECT sentence FROM sentences WHERE id = 9]]
 
 local function picking()
     if rm = 1 then
@@ -31,6 +34,12 @@ local function picking()
         sentence.text = s5
     elseif rm = 6 then
         sentence.text = s6
+    elseif rm = 7 then
+        sentnce.text = s7
+    elseif rm = 8 then
+        sentence,text = s8
+    elseif rm = 9 then
+        sentence.text = s9
     end
 end
 
