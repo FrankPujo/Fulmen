@@ -8,13 +8,13 @@ field.inputType( "decimal" )
 local number = field.userInput
 
 local function nerdsOn()
-    if nerdsOnRel  = true then
+    if nerdsBtn.selected = true then
         c = 343.08
     end
 end
 
-local function milsOn()
-    if mileOnRel = true then
+local function milesOn()
+    if mileBtn.selected = true then
         c = 214
     end
 end
@@ -34,13 +34,24 @@ function scene:create( event )
     inputBox.align = center
     inputBox.inputType = "decimal"
     
-    local value = tonumber inputBox.input
+    local value = tonumber( inputBox.input )
     
     local c = 343.
     
     local number = value * c
     
     local result = display.newTextBox( number, 30, 30 )
+    
+    local sideMenuBtn = widget.newButton( )
+    
+    local nerdsBtn = widget.newButton( )
+    
+    local milesBtn = widget.newButton ( )
+    
+    local function onSideRel
+        transition.to( sideMenu, { sideMenu.x = sideMenu.x + 30, easing = "" } )
+        transition.to( nerdsBtn, { nerdsBtn.x = nerdsBtn.x + 30, easing = "inOutCubic" }
+        transition.to( milesBtn, { milesBtn.x = milesBtn.x + 30, easing = "inOutCubic" } )
 
 	sceneGroup:insert( background )
 	sceneGroup:insert( title )

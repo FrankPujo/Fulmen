@@ -4,7 +4,7 @@ local scene = composer.newScene( curios )
 local sqlite3 = require ( "sqlite3")
 local math = require ("math")
 
-local rm = math.random( 6 )
+local rm = math.random( 9 )
 
 local sentence = display.newText( "Trivia!", 100, 100, 40 )
 
@@ -43,4 +43,10 @@ local function picking()
     end
 end
 
-local sentBtn = widget.newButton( )
+local sentBtn = widget.newButton( 
+    {
+        left = 100
+        top = 100
+        
+    }
+)
