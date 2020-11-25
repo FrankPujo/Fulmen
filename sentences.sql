@@ -17,6 +17,14 @@ VALUES ( 6, 'More than 100 lightings strike the Earth’s surface every second.'
 INSERT INTO sentences ( id, sentence )
 VALUES ( 7, 'A bolt contains up to one billion volts of electricity.' );
 INSERT INTO sentences ( id, sentence )
-VALUES ( 8, '' )
+VALUES ( 8, '' );
 INSERT INTO sentences ( id, sentence )
-VALUES ( 9, '' )
+VALUES ( 9, '' );
+INSERT INTO sentences ( id, sentence )
+VALUES ( 10, '' );
+INSERT INTO sentences ( id, sentence )
+VALUES ( 11, '' );
+INSERT INTO sentences ( id, sentence )
+VALUES ( 12, '' );
+INSERT INTO sentences ( id, sentence )
+VALUES ( 13, '' );

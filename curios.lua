@@ -4,7 +4,7 @@ local scene = composer.newScene( curios )
 local sqlite3 = require ( "sqlite3")
 local math = require ("math")
 
-local rm = math.random( 9 )
+local rm = math.random( 13 )
 
 local sentence = display.newText( "Trivia!", 100, 100, 40 )
 
@@ -20,6 +20,10 @@ local s6 = [[SELECT sentence FROM sentences WHERE id = 6]]
 local s7 = [[SELECT sentence FROM sentences WHERE id = 7]]
 local s8 = [[SELECT sentence FROM sentences WHERE id = 8]]
 local s9 = [[SELECT sentence FROM sentences WHERE id = 9]]
+local s10 = [[SELECT sentence FROM sentences WHERE id = 10]]
+local s11 = [[SELECT sentence FROM sentences WHERE id = 11]]
+local s12 = [[SELECT sentence FROM sentences WHERE id = 12]]
+local s13 = [[SELECT sentence FROM sentences WHERE id = 13]]
 
 local function picking()
     if rm = 1 then
@@ -40,6 +44,14 @@ local function picking()
         sentence,text = s8
     elseif rm = 9 then
         sentence.text = s9
+    elseif rm = 10 then
+        sentence.text = s10
+    elseif rm = 11 then
+        sentence.text = s11
+    elseif rm = 12 then
+        sentence.text = s12
+    elseif rm = 13 then
+        sentence.text = s13
     end
 end
 
@@ -47,6 +59,6 @@ local sentBtn = widget.newButton(
     {
         left = 100
         top = 100
-        
+        timer.performWithDelay( 500, picking )
     }
 )
