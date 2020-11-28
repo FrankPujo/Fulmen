@@ -5,20 +5,6 @@ composer.newScene( calculator )
 local inputBox = native.newTextField( )
 field.inputType( "decimal" )
 
-local number = inputBox.userInput
-
-local function nerdsOn()
-    if nerdsBtn.selected = true then
-        c = 343.08
-    end
-end
-
-local function milesOn()
-    if mileBtn.selected = true then
-        c = 214
-    end
-end
-
 function scene:create( event )
 	local sceneGroup = self.view
 
@@ -31,7 +17,7 @@ function scene:create( event )
         
     local value = tonumber( inputBox.input )
     
-    local c = 343.
+    local c = 343
     
     local number = value * c
     
@@ -41,16 +27,22 @@ function scene:create( event )
     local smbOpt = {
         
     }
+    local function nerdsOn( listener )
+        c = 343.09
+    end
     
     local nerdsBtn = widget.newButton( nbOpt )
     local nbOpt = {
-        
+        onRelease = nerdsOn
     }
     
     local milesBtn = widget.newButton ( mbOpt )
     local mbOpt = {
-        
+        onRelease = milesOn
     }
+    local function milesOn( listener)
+        c = 214
+    end
     
     local function onSideRel
         transition.to( sideMenu, { sideMenu.x = sideMenu.x + 30, easing = "inOutCubic" } )
@@ -59,8 +51,13 @@ function scene:create( event )
     end
 
 	sceneGroup:insert( background )
+    sceneGroup:insert( number )
+    sceneGroup:insert( value )
 	sceneGroup:insert( title )
     sceneGroup:insert( result )
+    sceneGroup:insert( sideMenuBtn )
+    sceneGroup:insert( nerdsBtn )
+    sceneGrouo:insert( milesBtn )
 end
 
 function scene:show( event )

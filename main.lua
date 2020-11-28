@@ -13,3 +13,5 @@ local function startApp()
         composer.gotoScene( premenu )
     end
 end
+
+local screen = display.newText( "Loading...", 50, 300, 20 )

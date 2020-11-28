@@ -25,7 +25,8 @@ local s11 = [[SELECT sentence FROM sentences WHERE id = 11]]
 local s12 = [[SELECT sentence FROM sentences WHERE id = 12]]
 local s13 = [[SELECT sentence FROM sentences WHERE id = 13]]
 
-local function picking()
+local function picking( listener )
+    timer.performWithDelay( 500 )
     if rm = 1 then
         sentence.text = s1
     elseif rm = 2 then
@@ -57,8 +58,8 @@ end
 
 local sentBtn = widget.newButton( 
     {
-        left = 100
-        top = 100
-        timer.performWithDelay( 500, picking )
+        x = 100,
+        y = 100,
+        onRelease = picking
     }
 )
