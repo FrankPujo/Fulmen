@@ -1,5 +1,5 @@
 # Fulmen
-Current Version: v0.1.4.4-beta
+Current Version: v0.1.4.6-beta
 
 Written in Lua with Solar2d Engine
 
