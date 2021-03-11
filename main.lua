@@ -8,6 +8,12 @@ local widget = require "widget"
 local display = require "display"
 local composer = require "composer"
 
+local sentences = {
+    "Don't cover under trees!",
+    "Zeus is the thunder's god for Ancient Greeks.",
+    "Lighing are... strong!"
+}
+
 -- some useful numbers
 local screenOffset = 320
 local visualizedPage = 1
@@ -53,21 +59,67 @@ firstPageGroup:insert( result )
 firstPageGroup:insert( numero )
 
 -- trivia button on the second page
-local triviaBtn = display.newRect( 480, display.contentCenterY, 60, 40 )
+local sentence
+
+local function runTrivia( listener )
+    local sentencesNum = 3
+    local randNumber = math.random( sentencesNum )
+    sentence.text = sentences[randNumber]
+end
+
+local triviaBtnOpt = {
+    x = display.contentCenterX + screenOffset,
+    y = display.contentCenterY,
+    width = 60,
+    height = 40,
+    onRelease = runTrivia,
+    shape = "rectangle"
+}
+
+local triviaBtn = widget.newButton( triviaBtnOpt )
+sentence = display.newText( "Trivia!", 480, 200, native.SystemFont )
+sentence.size = 30
 
 -- create a group for all the second page elements
 local secondPageGroup = display.newGroup()
 secondPageGroup:insert( triviaBtn )
+secondPageGroup:insert( sentence )
+
+-- page indicator circles
+local c1 = display.newCircle( display.contentCenterX - 20, 480, 8 )
+local c2 = display.newCircle( display.contentCenterX, 480, 5 )
+local c3 = display.newCircle( display.contentCenterX + 20, 480, 5 )
+
+local function f1t2()
+    -- circle 1 to 2
+end
+
+local function f2t3()
+    -- circle 2 to 3
+end
+
+local function f3t2()
+    -- circle 3 to 2
+end
+
+local function f2t1()
+    -- circle 2 to 1
+end
 
 -- function to move right between the pages
 function moveRight( listener )
+    if visualizedPage == 1 then
+        transition.to( c1, { time = 200, radius = 5 } )
+        transition.to( c2, { time = 200, radius = 8 } )
+    end
+
     if visualizedPage  == 3 then
         print( "trying to go too right!" )
     else
-        transition.to( firstPageGroup, { time = 2500, x = firstPageGroup.x - screenOffset, transition = easing.outQuint } )
-        transition.to( secondPageGroup, { time = 2500, x = secondPageGroup.x - screenOffset, transition = easing.outQuint } )
+        transition.to( firstPageGroup, { time = 1600, x = firstPageGroup.x - screenOffset, transition = easing.outQuart } )
+        transition.to( secondPageGroup, { time = 1600, x = secondPageGroup.x - screenOffset, transition = easing.outQuart } )
         visualizedPage = visualizedPage + 1
-        print( "trying to go too right!" )
+        print( visualizedPage )
     end
 end
 
@@ -76,8 +128,8 @@ function moveLeft( listener )
     if visualizedPage == 1 then
         print( "trying to go too left!" )
     else
-        transition.to( firstPageGroup, { time = 2500, x = firstPageGroup.x + screenOffset, transition = easing.outQuint } )
-        transition.to( secondPageGroup, { time = 3000, x = secondPageGroup.x + screenOffset, transition = easing.outQuint } )
+        transition.to( firstPageGroup, { time = 1600, x = firstPageGroup.x + screenOffset, transition = easing.outQuart } )
+        transition.to( secondPageGroup, { time = 1600, x = secondPageGroup.x + screenOffset, transition = easing.outQuart } )
         visualizedPage = visualizedPage - 1
         print( visualizedPage )
     end
@@ -85,25 +137,27 @@ end
 
 -- button to move right
 local goRBtnOpt = {
-    x = display.contentCenterX + 30,
-    y = 400,
-    width = 40,
-    height = 40,
+    x = display.contentCenterX + 80,
+    y = 480,
+    width = 150,
+    height = 80,
     onRelease = moveRight,
-    shape = "rectangle"
+    shape = "rectangle",
 }
 local goRBtn = widget.newButton( goRBtnOpt )
+goRBtn:setFillColor( 1, 1, 1, 0.2 )
 
 -- button to move left 
 local goLBtnOpt = {
-    x = display.contentCenterX - 30,
-    y = 400,
-    width = 40,
-    height = 40,
+    x = display.contentCenterX - 80,
+    y = 480,
+    width = 150,
+    height = 80,
     onRelease = moveLeft,
     shape = "rectangle"
 }
-local goRBtn = widget.newButton( goLBtnOpt )
+local goLBtn = widget.newButton( goLBtnOpt )
+goLBtn:setFillColor( 1, 1, 1, 0.2 )
 
 -- create menu
 local menuOpen = false
@@ -148,20 +202,23 @@ local function showNum( listener )
     numero.isVisible = true
 end
 
+local function blurOn( listener )
+    transition.to( menuBlur, { time = 10, x = menuBlur.x + 340 } )
+end
+
 -- open and close menu functions
 local function openMenu()
-    transition.to( menuGroup, { time = 1200, x = menuBG.x + 300 } )
+    transition.to( menuGroup, { time = 800, x = menuBG.x + 300, transition = easing.outQuart } )
     -- transition.to( menuBlur, { time = 1000, alpha = 0.2 } ) alpha transition not working...
-    transition.to( menuBlur, { time = 1, x = menuBlur.x + 340 } )
-
-    timer.performWithDelay( 700, hideNum )
+    timer.performWithDelay( 400, blurOn )
+    timer.performWithDelay( 150, hideNum )
 end
 
 local function closeMenu()
-    transition.to( menuGroup, { time = 1200, x = menuBG.x - 300 } )
+    transition.to( menuGroup, { time = 800, x = menuBG.x - 300, transition = easing.outCubic } )
     -- transition.to( menuBlur, { time = 1000, alpha = 0 } ) alpha transition not working...
-    transition.to( menuBlur, { time = 1, x = menuBlur.x - 340 } )
-    timer.performWithDelay( 500, showNum )
+    transition.to( menuBlur, { time = 100, x = menuBlur.x - 340 } )
+    timer.performWithDelay( 200, showNum )
 end
 
 -- toggle menu and check wether to open or close menu
